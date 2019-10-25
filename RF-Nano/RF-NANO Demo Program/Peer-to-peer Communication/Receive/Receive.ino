@@ -5,15 +5,13 @@
 #include "MirfHardwareSpiDriver.h"
 Nrf24l Mirf = Nrf24l(10, 9);
 
-int value;
-//String 
+byte value;
 
 void setup()
 {
   Serial.begin(9600);
   Mirf.spi = &MirfHardwareSpi;
   Mirf.init();
-
   Mirf.setRADDR((byte *)"FGHIJ"); //Set your own address (receiver address) using 5 characters
   Mirf.payload = sizeof(value);
   Mirf.channel = 90;             //Set the used channel
@@ -24,8 +22,8 @@ void setup()
 void loop()
 {
   if (Mirf.dataReady()) { //When the program is received, the received data is output from the serial port
-    Mirf.getData((byte *) &value);
-    Serial.print("Got data: ");
+    Mirf.getData(&value);
+    Serial.print("Got MotorDrive data: ");
     Serial.println(value);
   }
 }
