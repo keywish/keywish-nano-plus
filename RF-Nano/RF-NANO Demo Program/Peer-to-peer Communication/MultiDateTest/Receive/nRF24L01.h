@@ -24,6 +24,14 @@
     $Id$
 */
 
+#ifndef _NRF24L01_H_
+#define _NRF24L01_H_
+
+#include <Arduino.h>
+
+#include "MirfHardwareSpiDriver.h"
+
+// Nrf24l settings
 /* Memory Map */
 #define CONFIG      0x00
 #define EN_AA       0x01
@@ -73,9 +81,8 @@
 #define AW          0
 #define ARD         4
 #define ARC         0
-#define RF_DR_LOW   5
 #define PLL_LOCK    4
-#define RF_DR_HIGH  3
+#define RF_DR       3
 #define RF_PWR      1
 #define LNA_HCURR   0
 #define RX_DR       6
@@ -101,3 +108,79 @@
 #define FLUSH_RX      0xE2
 #define REUSE_TX_PL   0xE3
 #define NOP           0xFF
+
+#define mirf_ADDR_LEN	5
+#define mirf_CONFIG ((1<<EN_CRC) | (0<<CRCO) )
+
+class Nrf24l {
+  public:
+     Nrf24l(uint8_t cs_pin, uint8_t csn_pin);
+    ~Nrf24l() {
+
+    }
+    //   Nrf24l(uint8_t CePin, uint8_t CsnPin);
+    void init();
+    void config();
+    void send(uint8_t *value);
+    void setRADDR(uint8_t * adr);
+    void setTADDR(uint8_t * adr);
+    bool dataReady();
+    bool isSending();
+    bool rxFifoEmpty();
+    bool txFifoEmpty();
+    void getData(uint8_t * data);
+    uint8_t getStatus();
+
+    void transmitSync(uint8_t *dataout, uint8_t len);
+    void transferSync(uint8_t *dataout, uint8_t *datain, uint8_t len);
+    void configRegister(uint8_t reg, uint8_t value);
+    void readRegister(uint8_t reg, uint8_t * value, uint8_t len);
+    void writeRegister(uint8_t reg, uint8_t * value, uint8_t len);
+    void powerUpRx();
+    void powerUpTx();
+    void powerDown();
+
+    void csnHi();
+    void csnLow();
+
+    void ceHi();
+    void ceLow();
+    void flushRx();
+
+    /*
+       In sending mode.
+    */
+
+    uint8_t PTX;
+
+    /*
+       CE Pin controls RX / TX, default 8.
+    */
+
+    uint8_t cePin;
+
+    /*
+       CSN Pin Chip Select Not, default 7.
+    */
+
+    uint8_t csnPin;
+
+    /*
+       Channel 0 - 127 or 0 - 84 in the US.
+    */
+    uint8_t channel;
+
+    /*
+       Payload width in bytes default 16 max 32.
+    */
+
+    uint8_t payload;
+
+    /*
+       Spi interface (must extend spi).
+    */
+
+    MirfHardwareSpiDriver *spi;
+};
+
+#endif /* _NRF24L01_H_ */

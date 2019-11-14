@@ -1,8 +1,7 @@
 //Receiver program
 #include <SPI.h>
-#include "Mirf.h"
 #include "nRF24L01.h"
-#include "MirfHardwareSpiDriver.h"
+
 Nrf24l Mirf = Nrf24l(10, 9);
 
 byte value;
