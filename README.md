@@ -20,6 +20,11 @@ Sales email: ken@keywish-robot.com</br>
 ◆ Weight： 18g</br>
 # Driver installation
 Please refer to the operation manual for driver installation</br>
+If the rf-nano driver doesn't properly function, get the latest one from the following website:
+[Windows](http://www.wch.cn/downloads/CH341SER_EXE.html)</br>
+[Linux](http://www.wch.cn/downloads/CH341SER_LINUX_ZIP.html)</br>
+[Mac OS](http://www.wch.cn/downloads/CH341SER_MAC_ZIP.html)</br>
+[Android](http://www.wch.cn/downloads/CH341SER_ANDROID_ZIP.html)</br>
 # Arduino IDE Version
 Arduino IDE 1.8.6 and above Version</br>
 # AT command
