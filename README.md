@@ -1,6 +1,7 @@
 # Please Contact Us
-Technical support email: support@emakefun.com</br>
-Sales email: support@keywish-robot.com</br>
+Technical support email: abbott@emakefun.com  
+Technical support email: support@keywish-robot.com </br>
+Sales email: ken@keywish-robot.com  </br>
 # Product Parameter
 ◆ It is fully compatible with the Arduino nano-v3.0 pin and its usage method</br>
 ◆ BLE chip :TI CC2540</br>
