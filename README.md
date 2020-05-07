@@ -1,7 +1,7 @@
 # Please Contact Us
 Technical support email: support@keywish-robot.com </br>
 Sales email: ken@keywish-robot.com </br>
-The latest information download address:https://github.com/keywish/keywish-nano-plus/edit/master/README.md</br>
+The latest information download address:https://github.com/keywish/keywish-nano-plus </br>
 # Product Parameter
 ◆ It is fully compatible with the Arduino nano-v3.0 pin and its usage method</br>
 ◆ BLE chip :TI CC2540</br>
